@@ -253,3 +253,11 @@ This will prevent the user authentication every time!
 
 Tip: You can use the Google Chrome Developer tools under the Application tab to explore the Local Storage. 
    
+
+# Autor
+
+* **ANDRES DAVID VASQUEZ IBAÑEZ** - *Initial work* - [VASHIGO](https://github.com/vashigo)
+
+# Licencia
+
+This project is licensed under the GNU General Public License - see the [LICENSE](LICENSE) file for details
