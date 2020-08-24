@@ -8,8 +8,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 import {Button, TextField, Card, CardContent } from '@material-ui/core';
 
-import DateFnsUtils from '@date-io/moment'; // choose your lib
-import { MuiPickersUtilsProvider, DatePicker, KeyboardDatePicker } from "@material-ui/pickers";
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from "@material-ui/pickers";
 
 class TodoApp extends Component {
 
@@ -27,7 +26,6 @@ class TodoApp extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-
     render() {
         const { classes } = this.props;
         return (
@@ -44,10 +42,11 @@ class TodoApp extends Component {
                                 </label>
                             </div>
                             <TextField
+                                required
                                 label="Text"
                                 id="outlined-margin-none"
                                 defaultValue="Default Value"
-                                className={classes.textField}
+                                className={classes.textField,"textField"}
                                 variant="outlined"
                                 onChange={this.handleTextChange}
                                 value={this.state.text}
@@ -61,10 +60,12 @@ class TodoApp extends Component {
                                 </label>
                             </div>
                             <TextField
+                                required
                                 id="standard-number"
                                 label="Number"
                                 type="number"
                                 value={this.state.priority}
+                                className="textField"
                                 onChange={this.handlePriorityChange}
                                 InputLabelProps={{
                                     shrink: true,
@@ -83,6 +84,7 @@ class TodoApp extends Component {
                                 <KeyboardDatePicker
                                     disableFuture
                                     format="YYYY/MM/DD"
+                                    className="textField"
                                     value={this.state.selectedDate}
                                     inputValue={this.state.dueDate}
                                     onChange={this.handleDateChange}
@@ -167,7 +169,7 @@ const styles = theme => ({
     textField: {
       marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
-      width: '25ch',
+      width: '25ch'
     },
     bullet: {
         display: 'inline-block',

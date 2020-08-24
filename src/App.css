@@ -63,3 +63,11 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+.signOff-header {
+    width:auto
+}
+.textField {
+    text-align: center;
+    align-content: center;
+}
