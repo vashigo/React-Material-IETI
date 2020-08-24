@@ -46,7 +46,7 @@ class TodoApp extends Component {
                                 label="Text"
                                 id="outlined-margin-none"
                                 defaultValue="Default Value"
-                                className={classes.textField,"textField"}
+                                className={classes.textField}
                                 variant="outlined"
                                 onChange={this.handleTextChange}
                                 value={this.state.text}
@@ -65,7 +65,8 @@ class TodoApp extends Component {
                                 label="Number"
                                 type="number"
                                 value={this.state.priority}
-                                className="textField"
+                                className={classes.textField}
+                                variant="outlined"
                                 onChange={this.handlePriorityChange}
                                 InputLabelProps={{
                                     shrink: true,
@@ -82,12 +83,16 @@ class TodoApp extends Component {
                             </div>
                             <MuiPickersUtilsProvider utils={MomentUtils}>
                                 <KeyboardDatePicker
+                                    autoOk
                                     disableFuture
                                     format="YYYY/MM/DD"
-                                    className="textField"
+
+                                    inputVariant="outlined"
+
                                     value={this.state.selectedDate}
                                     inputValue={this.state.dueDate}
                                     onChange={this.handleDateChange}
+                                    
                                 />
                             </MuiPickersUtilsProvider>
 
@@ -137,22 +142,23 @@ class TodoApp extends Component {
 
         e.preventDefault();
 
-        if (!this.state.text.length || !this.state.priority.length || !this.state.dueDate)
-            return;
+        if (!this.state.text.length || !this.state.priority.length || !this.state.dueDate){
+            alert("Llene todos los campos!!");
+        }else{
+            const newItem = {
+                text: this.state.text,
+                priority: this.state.priority,
+                dueDate: this.state.dueDate,
 
-        const newItem = {
-            text: this.state.text,
-            priority: this.state.priority,
-            dueDate: this.state.dueDate,
-
-        };
-        this.setState(prevState => ({
-            items: prevState.items.concat(newItem),
-            text: '',
-            priority: 0,
-            dueDate: moment().format("YYYY/MM/DD"),
-            selectedDate: moment()
-        }));
+            };
+            this.setState(prevState => ({
+                items: prevState.items.concat(newItem),
+                text: '',
+                priority: 0,
+                dueDate: moment().format("YYYY/MM/DD"),
+                selectedDate: moment()
+            }));
+        }
     }
 
 }
