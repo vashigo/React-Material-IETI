@@ -49,13 +49,6 @@ class App extends Component {
         const TodoAppView = () => (
                 <TodoApp/>
         );
-        var view;
-
-        if(this.state.isLoggedIn && localStorage.getItem("isLoggedIn") === "true"){
-            view = <Redirect to="/todo" />
-        }else{
-            view =  <Redirect to="/" />
-        }
 
         return (
             <Router>
@@ -77,7 +70,7 @@ class App extends Component {
                         <br/>
                     <body>
                         <div>
-                            {view}
+                            {this.state.isLoggedIn && localStorage.getItem("isLoggedIn") === "true" ? <Redirect to="/todo" /> : <Redirect to="/" />}
                             <Switch>
                                 <Route exact path="/" component={LoginView}/>
                                 <Route exact path="/todo" component={TodoAppView}/>
